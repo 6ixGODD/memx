@@ -20,6 +20,10 @@ class EmbeddingAdapter(abc.ABC):
         return self._dim
 
     @abc.abstractmethod
+    async def init(self) -> None:
+        pass
+
+    @abc.abstractmethod
     async def embed(self, text: str, **kwargs: typing.Any) -> typing.List[float]:
         pass
 

@@ -1,1 +1,1 @@
-from graphragx.adapter.embeds import openai
+from memx.adapter.embeds import openai

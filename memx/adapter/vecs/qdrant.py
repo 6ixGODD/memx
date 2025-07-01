@@ -4,15 +4,10 @@ import typing
 
 import qdrant_client
 
-from graphragx.adapter.vecs import _base
+from memx.adapter.vecs import _base
 
 
 class Qdrant(_base.VectorAdapter):
-    _dim: int
-
-    @property
-    def dim(self) -> int:
-        return self._dim
 
     def __init__(
         self,
@@ -32,6 +27,9 @@ class Qdrant(_base.VectorAdapter):
             grpc_port=grpc_port,
             **kwargs
         )
+
+    async def init(self) -> None:
+        pass
 
     async def query(
         self,

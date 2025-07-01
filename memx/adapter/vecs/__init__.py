@@ -1,1 +1,1 @@
-from graphragx.adapter.vecs import qdrant
+from memx.adapter.vecs import qdrant

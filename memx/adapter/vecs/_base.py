@@ -1,13 +1,20 @@
 from __future__ import annotations
 
 import abc
+import functools
 import typing
 
 
 class VectorAdapter(abc.ABC):
+    _dim: int
+
+    @functools.lru_cache(maxsize=None)
+    @property
+    def dim(self) -> int:
+        return self._dim
 
     @abc.abstractmethod
-    def dim(self) -> int:
+    async def init(self) -> None:
         pass
 
     @typing.overload

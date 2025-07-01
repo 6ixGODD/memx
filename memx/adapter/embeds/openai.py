@@ -16,8 +16,8 @@ class OpenAI(_base.EmbeddingAdapter):
         mid: str,
         dim: int,
         model: str,
-        base_url: str,
         api_key: str,
+        base_url: str,
         **kwargs: typing.Any
     ):
         self._mid = mid
@@ -28,6 +28,9 @@ class OpenAI(_base.EmbeddingAdapter):
             base_url=base_url,
             **_kw.filter_kwargs(openai.AsyncOpenAI, kwargs)
         )
+
+    async def init(self) -> None:
+        pass
 
     async def embed(self, text: str, **kwargs: typing.Any) -> typing.List[float]:
         response = await self.client.embeddings.create(
