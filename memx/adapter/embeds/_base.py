@@ -1,0 +1,28 @@
+from __future__ import annotations
+
+import abc
+import functools
+import typing
+
+
+class EmbeddingAdapter(abc.ABC):
+    _mid: str
+    _dim: int
+
+    @functools.lru_cache(maxsize=None)
+    @property
+    def mid(self) -> str:
+        return self._mid
+
+    @functools.lru_cache(maxsize=None)
+    @property
+    def dim(self) -> int:
+        return self._dim
+
+    @abc.abstractmethod
+    async def embed(self, text: str, **kwargs: typing.Any) -> typing.List[float]:
+        pass
+
+    @abc.abstractmethod
+    async def close(self) -> None:
+        pass
