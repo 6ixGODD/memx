@@ -1,20 +1,20 @@
 from __future__ import annotations
 
-import functools
+import functools as fc
 import inspect
-import typing
+import typing as t
 
 
-@functools.lru_cache(maxsize=None)
-def _get_func_params(func: typing.Callable) -> typing.Set[str]:
+@fc.lru_cache(maxsize=None)
+def _get_func_params(func: t.Callable) -> t.Set[str]:
     return set(inspect.signature(func).parameters.keys())
 
 
 def filter_kwargs(
-    func: typing.Callable,
-    kwargs: typing.Dict[str, typing.Any],
+    func: t.Callable,
+    kwargs: t.Dict[str, t.Any],
     prefix: str = ""
-) -> typing.Dict[str, typing.Any]:
+) -> t.Dict[str, t.Any]:
     """
     Filter out invalid keyword arguments for a given function by comparing the provided
     keyword arguments to the function's signature. Only valid keyword arguments are returned.

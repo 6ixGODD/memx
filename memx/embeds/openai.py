@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import typing
+import typing as t
 
 import openai
 
@@ -18,7 +18,7 @@ class OpenAI(_base.Embedding):
         model: str,
         api_key: str,
         base_url: str,
-        **kwargs: typing.Any
+        **kwargs: t.Any
     ):
         self._mid = mid
         self._dim = dim
@@ -32,7 +32,7 @@ class OpenAI(_base.Embedding):
     async def init(self) -> None:
         pass
 
-    async def embed(self, text: str, **kwargs: typing.Any) -> typing.List[float]:
+    async def embed(self, text: str, **kwargs: t.Any) -> t.List[float]:
         response = await self.client.embeddings.create(
             model=self.model,
             input=text,

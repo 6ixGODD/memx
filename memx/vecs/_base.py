@@ -1,14 +1,14 @@
 from __future__ import annotations
 
 import abc
-import functools
-import typing
+import functools as fc
+import typing as t 
 
 
 class VectorStore(abc.ABC):
     _dim: int
 
-    @functools.lru_cache(maxsize=None)
+    @fc.lru_cache(maxsize=None)
     @property
     def dim(self) -> int:
         return self._dim
@@ -17,35 +17,35 @@ class VectorStore(abc.ABC):
     async def init(self) -> None:
         pass
 
-    @typing.overload
+    @t.overload
     async def query(
         self,
         query: str,
         *,
-        emb: typing.Callable[[str], typing.List[float]],
+        emb: t.Callable[[str], t.List[float]],
         k: int = 10,
-        **kwargs: typing.Any
+        **kwargs: t.Any
     ):
         pass
 
-    @typing.overload
+    @t.overload
     async def query(
         self,
-        query: typing.List[float],
+        query: t.List[float],
         *,
         k: int = 10,
-        **kwargs: typing.Any
+        **kwargs: t.Any
     ):
         pass
 
     @abc.abstractmethod
     async def query(
         self,
-        query: typing.Union[str, typing.List[float]],
+        query: t.Union[str, t.List[float]],
         *,
-        emb: typing.Callable[[str], typing.List[float]] | None = None,
+        emb: t.Callable[[str], t.List[float]] | None = None,
         k: int = 10,
-        **kwargs: typing.Any
+        **kwargs: t.Any
     ):
         pass
 

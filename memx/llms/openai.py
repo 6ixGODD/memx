@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import typing
+import typing as t 
 
 import openai
 
@@ -17,7 +17,7 @@ class OpenAI(_base.LLMs):
         api_key: str,
         base_url: str,
         max_context_length: int,
-        **kwargs: typing.Any
+        **kwargs: t.Any
     ):
         self._model = model
         self._max_context_length = max_context_length
@@ -30,16 +30,16 @@ class OpenAI(_base.LLMs):
     async def init(self) -> None:
         pass
 
-    async def exec(self, text: str, **kwargs: typing.Any) -> str:
+    async def exec(self, text: str, **kwargs: t.Any) -> str:
         pass
 
     async def exec_structured(
         self,
         text: str,
         *,
-        schema: typing.Type[typing.TypedDict],
-        **kwargs: typing.Any
-    ) -> typing.Dict[str, typing.Any]:
+        schema: t.Type[t.TypedDict],
+        **kwargs: t.Any
+    ) -> t.Dict[str, t.Any]:
         pass
 
     async def close(self) -> None:

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import typing
+import typing as t 
 
 import qdrant_client
 
@@ -17,7 +17,7 @@ class Qdrant(_base.VectorStore):
         url: str | None = None,
         port: int | None = None,
         grpc_port: int | None = None,
-        **kwargs: typing.Any
+        **kwargs: t.Any
     ):
         self._dim = dim
         self._client = qdrant_client.QdrantClient(
@@ -33,11 +33,11 @@ class Qdrant(_base.VectorStore):
 
     async def query(
         self,
-        query: str | typing.List[float],
+        query: str | t.List[float],
         *,
-        emb: typing.Callable[[str], typing.List[float]] | None = None,
+        emb: t.Callable[[str], t.List[float]] | None = None,
         k: int = 10,
-        **kwargs: typing.Any
+        **kwargs: t.Any
     ):
         pass
 

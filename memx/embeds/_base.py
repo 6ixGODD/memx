@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import abc
 import functools
-import typing
+import typing as t
 
 
 class Embedding(abc.ABC):
@@ -24,7 +24,7 @@ class Embedding(abc.ABC):
         pass
 
     @abc.abstractmethod
-    async def embed(self, text: str, **kwargs: typing.Any) -> typing.List[float]:
+    async def embed(self, text: str, **kwargs: t.Any) -> t.List[float]:
         pass
 
     @abc.abstractmethod

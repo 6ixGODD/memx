@@ -1,5 +1,5 @@
 import importlib as _importlib
-import typing as _typing
+import typing as _t
 
 from memx._version import (
     __title__,
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 
-def __getattr__(name: str) -> _typing.Any:
+def __getattr__(name: str) -> _t.Any:
     if name in __all__:
         return _importlib.import_module("." + name, __name__)
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
