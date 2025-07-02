@@ -10,9 +10,13 @@ __all__ = [
     '__title__',
     '__version__',
 
-    'adapter',
+    'embeds',
+    'llms',
     'mem',
+    'vecs',
+
     'client',
+    'errors',
     'types_'
 ]
 

@@ -5,7 +5,7 @@ import functools
 import typing
 
 
-class EmbeddingAdapter(abc.ABC):
+class Embedding(abc.ABC):
     _mid: str
     _dim: int
 

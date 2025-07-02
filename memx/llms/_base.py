@@ -7,7 +7,7 @@ import typing
 _T = typing.TypeVar('_T', bound=typing.TypedDict)
 
 
-class LLMAdapter(abc.ABC):
+class LLMs(abc.ABC):
     _max_context_length: int
     _model: str
 

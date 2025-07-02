@@ -5,7 +5,7 @@ import functools
 import typing
 
 
-class VectorAdapter(abc.ABC):
+class VectorStore(abc.ABC):
     _dim: int
 
     @functools.lru_cache(maxsize=None)

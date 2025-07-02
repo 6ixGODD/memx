@@ -3,7 +3,7 @@ from __future__ import annotations
 import abc
 
 
-class MemAdapter(abc.ABC):
+class MemDB(abc.ABC):
 
     @abc.abstractmethod
     async def init(self) -> None:

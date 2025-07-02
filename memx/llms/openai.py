@@ -5,10 +5,10 @@ import typing
 import openai
 
 import memx._utils.kwargs as _kw
-from memx.adapter.llms import _base
+from memx.llms import _base
 
 
-class OpenAI(_base.LLMAdapter):
+class OpenAI(_base.LLMs):
 
     def __init__(
         self,

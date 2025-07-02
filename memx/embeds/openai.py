@@ -5,10 +5,10 @@ import typing
 import openai
 
 import memx._utils.kwargs as _kw
-from memx.adapter.embeds import _base
+from memx.embeds import _base
 
 
-class OpenAI(_base.EmbeddingAdapter):
+class OpenAI(_base.Embedding):
 
     def __init__(
         self,

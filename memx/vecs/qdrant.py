@@ -4,10 +4,10 @@ import typing
 
 import qdrant_client
 
-from memx.adapter.vecs import _base
+from memx.vecs import _base
 
 
-class Qdrant(_base.VectorAdapter):
+class Qdrant(_base.VectorStore):
 
     def __init__(
         self,

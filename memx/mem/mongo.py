@@ -3,10 +3,10 @@ from __future__ import annotations
 import beanie
 import motor.motor_asyncio as motor
 
-from memx.adapter.mem import _base
+from memx.mem import _base
 
 
-class Mongo(_base.MemAdapter):
+class Mongo(_base.MemDB):
 
     def __init__(
         self,
