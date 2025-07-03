@@ -5,7 +5,7 @@ import typing as t
 import openai
 
 import memx._utils.kwargs as _kw
-from memx.embeds import _base
+from memx._embedding import _base
 
 
 class OpenAI(_base.Embedding):
@@ -39,7 +39,7 @@ class OpenAI(_base.Embedding):
             **_kw.filter_kwargs(self.client.embeddings.create, kwargs)
         )
         if not response or not response.data or not response.data[0].embedding:
-            raise ValueError("Failed to retrieve embedding from OpenAI API")
+            raise ValueError("Failed to retrieve _embedding from OpenAI API")
         return response.data[0].embedding
 
     async def close(self):

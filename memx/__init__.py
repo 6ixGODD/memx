@@ -10,10 +10,10 @@ __all__ = [
     '__title__',
     '__version__',
 
-    'embeds',
-    'llms',
-    'mem',
-    'vecs',
+    '_embedding',
+    '_llms',
+    '_mems',
+    '_vector_store',
 
     'client',
     'errors',

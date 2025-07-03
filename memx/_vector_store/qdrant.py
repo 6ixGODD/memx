@@ -4,7 +4,7 @@ import typing as t
 
 import qdrant_client
 
-from memx.vecs import _base
+from memx._vector_store import _base
 
 
 class Qdrant(_base.VectorStore):
