@@ -3,7 +3,7 @@ from __future__ import annotations
 import beanie
 import motor.motor_asyncio as motor
 
-from memx.mem import _base
+from memx._mem import _base
 
 
 class Mongo(_base.MemDB):

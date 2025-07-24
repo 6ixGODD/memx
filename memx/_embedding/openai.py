@@ -5,7 +5,7 @@ import typing as t
 import openai
 
 import memx._utils.kwargs as _kw
-from memx.embeds import _base
+from memx._embedding import _base
 
 
 class OpenAI(_base.Embedding):
