@@ -3,7 +3,7 @@ from __future__ import annotations
 import functools as fc
 import inspect
 import typing as t
-
+import datetime as dt
 
 @fc.lru_cache(maxsize=None)
 def _get_func_params(func: t.Callable) -> t.Set[str]:
@@ -11,31 +11,36 @@ def _get_func_params(func: t.Callable) -> t.Set[str]:
 
 
 def filter_kwargs(
-    func: t.Callable,
+    fn: t.Callable,
     kwargs: t.Dict[str, t.Any],
-    prefix: str = ""
+    pref: str = ""
 ) -> t.Dict[str, t.Any]:
     """
-    Filter out invalid keyword arguments for a given function by comparing the provided
-    keyword arguments to the function's signature. Only valid keyword arguments are returned.
+    Filter out invalid keyword arguments for a given function by comparing
+    the provided keyword arguments to the function's signature. Only valid
+    keyword arguments are returned.
 
     Args:
-        func: The function to filter keyword arguments for.
+        fn: The function to filter keyword arguments for.
         kwargs: The keyword arguments to filter.
-        prefix: The prefix to remove from keyword argument names before checking. Defaults to "".
+        pref: The prefix to remove from keyword argument names before
+        checking. Defaults to "".
 
     Returns:
         The filtered keyword arguments with valid parameter names only.
     """
-    valid_params = _get_func_params(func)
+    valid_params = _get_func_params(fn)
 
-    if prefix:
+    if pref:
         # Remove prefix and filter
         filtered = {}
         for key, value in kwargs.items():
-            if key.startswith(prefix):
-                param_name = key[len(prefix):]
-                if param_name in valid_params and param_name not in {"self", "cls"}:
+            if key.startswith(pref):
+                param_name = key[len(pref):]
+                if (
+                    param_name in valid_params
+                    and param_name not in {"self", "cls"}
+                ):
                     filtered[param_name] = value
         return filtered
     else:
@@ -45,3 +50,7 @@ def filter_kwargs(
             for key, value in kwargs.items()
             if key in valid_params and key not in {"self", "cls"}
         }
+
+
+def utc_now() -> dt.datetime:
+    return dt.datetime.now(dt.UTC)
